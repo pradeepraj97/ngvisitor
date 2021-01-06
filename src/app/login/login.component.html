@@ -1,0 +1,33 @@
+ 
+<div class="sidenav">
+         <div class="login-main-text">
+            <h2>visitor Login Page</h2>
+            <p>Lissomsofttech </p>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+              <form >
+                <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+                <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+                 
+      
+                  <p><span class="fa fa-user"></span><input type="email" Placeholder="EmailId" name="email" required [(ngModel)]="log.emailId"></p>
+                  <p><span class="fa fa-lock"></span><input type="password"  Placeholder="Password" name="password" required [(ngModel)]="log.password"></p>
+      
+                  <div>
+                    <span style="width:50%;   display: inline-block;"><input (click)="getCredentials()" type="submit" value="Sign In"></span><hr>
+                    <span ><a class="large-text"
+                        (click)="changepassword()">Forgot
+                        password?</a></span>
+      
+      
+                  </div>
+      
+               
+           
+              </form>
+            </div>
+         </div>
+      </div>

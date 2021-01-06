@@ -1,0 +1,170 @@
+.navbar-brand{
+  height: 30px;
+  font-size: 30px;
+  text-transform: uppercase;
+ 
+  
+}
+#dropdownMenuButton {
+  padding: 10px 20px;
+  font-size: 19px;
+  text-transform: uppercase;
+  background-color: #d65f10;
+   color: black;
+}
+.dropdown-menu{
+  padding: 10px 20px;
+  font-size: 20px;
+background-color: #5a8042;
+text-transform: uppercase;
+font-size: 19px;
+
+
+}
+h3{
+  padding: 10px 50px;
+  margin-top: 10px;
+  font-size: 20px;
+   color: rgb(0, 0, 0);
+   background-color: #d65f10;
+
+}
+.navbar-nav>li>a {
+  padding: 13px 20px;
+  font-size: 20px;
+  background-color: #d65f10;
+  margin-right: 10px;
+  color: black;
+
+}
+
+.container-fluid{
+  width: 100%;
+ height: 70px;
+ top: 71px;
+   
+  position: absolute;
+  background-color: #3f7046;
+}
+.table-striped{
+  background-color:#3f7046;
+  top: 150px;
+  position: absolute;
+   height: 90px;
+  font-size: large;
+}
+/* / date / */
+#fromdate{
+ width: 40px 90px;
+  padding: 10px;
+  text-align: justify;
+  text-transform: uppercase;
+  margin-top: 10px;
+ font-size: large;
+ background-color: #d4d9df;
+}
+#todate{
+  width: 40px 90px;
+   padding: 10px;
+    
+   margin-top: 10px;
+   margin-left: 300px;
+   background-color: rgb(220, 219, 221);
+   text-transform: uppercase;
+  font-size: large;
+ }
+
+ /* / select / */
+
+.select { 
+  position: relative; 
+  display: flex; 
+  width: 130px; 
+  margin-top: 17px;
+  height: 40px; 
+  margin-left: 550px;
+  background: #d4d9df;  
+  border-radius: .25em; 
+} 
+select { 
+  width: 100%; 
+
+  
+  color: rgb(0, 0, 0); 
+  cursor: pointer; 
+  font-size: 19px;
+} 
+.input, btn-primary{
+  width: 100px;
+  position: absolute;
+  margin-left: 600px;
+}
+label{
+  padding: 10px 20px;
+  text-align: center;
+  right: 10px; 
+  top:10px; 
+  position: absolute;
+  background-color: #d65f10;
+  margin-right: 10px;
+  font-size: 20px;
+}
+#dp {
+  width: 300px;
+  position: absolute;
+  margin-left: 570px;
+}
+
+.dropdown-toggle {
+  padding: 11px 25px;
+  font-size: 19px;
+  position: relative;
+  margin-top: 10px;
+  text-transform: uppercase;
+  background-color: #2eb85c;
+  color: black;
+}
+
+#selectbutton {
+  margin-left: 750px;
+  padding: 10px 20px;
+  font-size: 19px;
+  color: black;
+  position: relative;
+  margin-top: 10px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu>a:after {
+  display: block;
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 10px 5px;
+  border-left-color: rgb(117, 8, 8);
+  margin-top: 5px;
+}
+
+.dropdown-menu1 {
+  padding: 10px 20px;
+  font-size: 20px;
+  margin-bottom: 400px;
+  display: flex;
+  position: relative;
+  background-color: #1e05ac;
+  text-transform: uppercase;
+  font-size: 30px;
+}

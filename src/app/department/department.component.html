@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="container-fluid">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2><b>Department</b></h2>
+                    </div>
+                    <div class="col-xs-6"  >
+                        <a routerLink="/login"> <button type="button"
+                                class="btn btn-secondary">Logout</button></a>
+                      <div ><label >{{username}}</label></div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Person</th>
+                        <th>Department</th>
+                        <th>Purpose</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let detail of details; let i =index">
+                        <td>{{detail.visitorName}}</td>
+                        <td>{{detail.date}} </td>
+                        <td> {{detail.employeeName}} </td>
+                        <td> {{detail.department}}</td>
+                        <td> {{detail.purpose}}</td>
+                        <td> {{detail.status}}</td>
+                        <td>
+                            <a (click)=approve(detail.visitorId) class="aprove"><i class="fas fa-thumbs-up"></i></a>
+                            <a (click)=reject(detail.visitorId) class="reject"><i class="fas fa-window-close"></i></a>
+
+                        </td>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- links -->

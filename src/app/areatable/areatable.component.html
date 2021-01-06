@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+<div class="container">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2><b>Area</b></h2>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="#adduserModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Area</span></a>						
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                         <th>SL.no</th>
+                        <th>Area Status</th>
+                         <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of areas; let i=index">
+                        <td>{{i+1}} </td>
+                        <td>{{a.areaStatus}}</td>
+                        <td>
+                            <a (click)="openEdit(a)" href="#edituserModal" class="edit" data-toggle="modal"><i class="material-icons"
+                                    data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a (click)="openDelete(a)" href="#deleteuserModal" class="delete" data-toggle="modal"><i class="material-icons"
+                                    data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+<!-- Add Button -->
+    <div id="adduserModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form [formGroup]="areaForm" (ngSubmit)="newArea()">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Area</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Area</label>
+                            <input type="email" class="form-control" name="areaStatus" [(ngModel)]="newarea.areaStatus" formControlName="addarea" required>
+                            <div *ngIf="addarea.touched && addarea.invalid">
+                                <small *ngIf="addarea.errors.required" class="text-danger">Area name is required<br></small>
+                              </div>
+                        </div>
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input  type="submit" class="btn btn-success" [disabled] areaForm.Invalid value="Add">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     
+<!-- Edit Modal HTML -->
+<div id="edituserModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form [formGroup]="editareaForm" (ngSubmit)="editArea()">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Area Status</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Area Status</label>
+                        <input type="email" class="form-control" name="areaStatus" [(ngModel)]="edit.areaStatus" formControlName="editarea" required>
+                        <div *ngIf="editarea.touched && editarea.invalid">
+                            <small *ngIf="editarea.errors.required" class="text-danger">Area name is required<br></small>
+                          </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input  type="submit" class="btn btn-info" [disabled] editareaForm.Invalid value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Delete Modal HTML -->
+<div id="deleteuserModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Area</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input  (click)="deleteArea()" type="submit" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

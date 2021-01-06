@@ -1,0 +1,192 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
+<div class="container-fluid">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2><b>Reception</b></h2>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="username" ><label>{{username}}</label></div>
+                        <!-- redirect to login -->
+                        <a routerLink ="/login"> <button type="button" class="btn btn-secondary">Logout</button></a>
+                        <!-- logout btn end -->
+                        <a href="#addvisitorModal" class="btn btn-success" data-toggle="modal"><i class="fa fa-address-card" aria-hidden="true"></i> <span>New Visitor</span></a>	
+                    					
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>SL.no</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Person Visited  </th>
+                        <th>Department</th>
+                        <th>In time</th>
+                        <th>Out time</th>
+                        <th>Authorized by</th>
+                        <th>Purpose</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let v of visitors; let i=index">
+
+                        <td>{{i+1}}</td>
+                        <td>{{v.visitorName}}</td>
+                        <td>{{v.date}}</td>
+                        <td>{{v.employeeName}}</td>
+                        <td>{{v.department}}</td>
+                        <td>{{v.inTime}}</td>
+                        <td>{{v.outTime}}</td>
+                        <td>{{v.authorizedBy}}</td>
+                        <td>{{v.purpose}}</td>
+                        <td>{{v.status}}</td>
+                        <td>
+                          
+                           
+                         <a (click)="openEdit(v)" href="#editvisitorModal" class="edit" data-toggle="modal"><i class="material-icons"
+                                    data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a (click)="openDelete(v)" href="#deleteuserModal" class="delete" data-toggle="modal"><i class="material-icons"
+                                data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    </td>
+                         
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<!--add   Modal HTML -->
+
+<div id="addvisitorModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Visitor</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="visitorName" [(ngModel)]="newvisit.visitorName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control"  name="date" placeholder="MM/DD/YYYY" type="date"  [(ngModel)]="newvisit.date" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Person</label>
+                        <input type="text" class="form-control" name="employeeName" [(ngModel)]="newvisit.employeeName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select class="form-control" name="deptname" id="dptdrpdwn" [(ngModel)]="newvisit.department" required>
+                            <option >Select...</option>
+                            <option  *ngFor="let d of deptdata">{{d.deptName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Area Status</label>
+                        <select class="form-control" name="deptname" id="dptdrpdwn" [(ngModel)]="newvisit.area">
+                            <option >Select...</option>
+                            <option *ngFor="let a of areadata">{{a.areaStatus}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>In time</label>
+                        <input type="time" step= "1" class="form-control" name="inTime"  min="00:00" max="24:00" [(ngModel)]="newvisit.inTime" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Purpose</label>
+                        <input type="text" class="form-control" name="purpose" [(ngModel)]="newvisit.purpose" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Authorized by</label>
+                        <input type="text" class="form-control" name="authorizedBy" [(ngModel)]="newvisit.authorizedBy" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <input type="text" class="form-control" name="status" [(ngModel)]="newvisit.status" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input (click)="newVisit()" type="submit" class="btn btn-success" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit visitor -->
+<div id="editvisitorModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">     
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Reception</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        
+
+                        <!-- time -->
+    
+                        <label for="appt">Out time</label>
+
+                        <input type="time" step= "1" id="outtime" name="outtime"
+                               min="00:00" max="24:00" [(ngModel)]="outTime" required>
+                          
+                          
+
+                </div>
+              
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input (click)="editOutTime()" type="submit" class="btn btn-info" value="Save">
+                </div>
+            </form>
+        </div>
+      
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteuserModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Visitor</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input  (click)="deleteVisit()" type="submit" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
